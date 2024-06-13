@@ -14,19 +14,12 @@ class ExpenseDB:
     def __init__(self, db_name):
         self.conn = sqlite3.connect(db_name)
         self.cursor = self.conn.cursor()
-        self.create_table()
-
-    def create_table(self):
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS expenses
-                            (id INTEGER PRIMARY KEY AUTOINCREMENT,
-                             amount REAL, 
-                             category TEXT, 
-                             date TEXT)''')
+                            (amount REAL, category TEXT, date TEXT)''')
         self.conn.commit()
 
     def add_expense(self, expense):
-        self.cursor.execute("INSERT INTO expenses (amount, category, date) VALUES (?, ?, ?)", 
-                            (expense.amount, expense.category, expense.date))
+        self.cursor.execute("INSERT INTO expenses VALUES (?, ?, ?)", (expense.amount, expense.category, expense.date))
         self.conn.commit()
 
     def get_all_expenses(self):
@@ -37,5 +30,5 @@ class ExpenseDB:
         self.cursor.execute("DELETE FROM expenses WHERE category=?", (category,))
         self.conn.commit()
 
-    def close(self):
+    def close_connection(self):
         self.conn.close()
