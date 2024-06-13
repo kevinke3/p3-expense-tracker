@@ -29,7 +29,7 @@ class Menu:
                 _, callback = self.options[choice]
                 callback()
             else:
-                print("Hell nooooo")
+                print("Hell nooooo!!!!")
 
 def add_expense_menu():
     amount = float(input("Enter the amount: "))
