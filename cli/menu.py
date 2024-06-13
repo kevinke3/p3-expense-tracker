@@ -18,7 +18,7 @@ class Menu:
     def run(self):
         while True:
             self.display()
-            choice = input("Enter your choice: ").strip().lower()
+            choice = input("Pick one pal: ").strip().lower()
 
             if choice == 'X':
                 print("See yaaah...")
