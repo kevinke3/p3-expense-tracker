@@ -1,4 +1,4 @@
-# models/expense.py
+
 import sqlite3
 
 class Expense:
